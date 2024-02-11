@@ -8,12 +8,16 @@ export const useCartStore = defineStore('cart', () => {
     const isCartVisible = ref(false)
 
     // function
-    function setCartVisible() {
+    const setCartVisible = () => {
         isCartVisible.value = true
     }
 
-    function setCartInVisible() {
+    const setCartInVisible = () => {
         isCartVisible.value = false
+    }
+
+    const toggleCartVisibility = () => {
+        isCartVisible.value = !isCartVisible.value
     }
 
     return {
@@ -23,6 +27,7 @@ export const useCartStore = defineStore('cart', () => {
 
         // functions
         setCartInVisible,
-        setCartVisible
+        setCartVisible,
+        toggleCartVisibility
     }
 })

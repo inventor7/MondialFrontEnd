@@ -1,7 +1,6 @@
 <template>
     <div>
-        <Sheet modal :update="useCartStore().setCartVisible()" :default-open="useCartStore().isCartVisible" :open="useCartStore().isCartVisible" >
-           
+        <Sheet :open="isCartVisible" :default-open="isCartVisible" v-on:update:open="setCartInVisible"  modal>
             <SheetContent>
                 <SheetHeader>
                     <SheetTitle>{{ props.title }}</SheetTitle>
@@ -11,12 +10,13 @@
                 </SheetHeader>
                 <slot name="Body" />
                 <SheetFooter>
-                    <SheetClose as-child>
+                    <SheetClose>
                         <slot name="ButtonClose" />
                     </SheetClose>
                 </SheetFooter>
             </SheetContent>
         </Sheet>
+
     </div>
 </template>
 
@@ -26,6 +26,9 @@ const props = defineProps({
     title: String,
     description: String
 })
+
+const { toggleCartVisibility, setCartInVisible, setCartVisible } = useCartStore();
+const { isCartVisible } = toRefs(useCartStore());
 
 </script>
 

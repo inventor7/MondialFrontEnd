@@ -9,6 +9,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('./src/components/ui/button/Button.vue')['default']
     Cart: typeof import('./src/components/Cart.vue')['default']
+    Categories: typeof import('./src/components/Categories.vue')['default']
+    Category: typeof import('./src/components/Category.vue')['default']
     ClientLayout: typeof import('./src/layouts/ClientLayout.vue')['default']
     Dialog: typeof import('./src/components/ui/dialog/Dialog.vue')['default']
     DialogClose: typeof import('./src/components/ui/dialog/DialogClose.vue')['default']
@@ -23,6 +25,7 @@ declare module 'vue' {
     FormItem: typeof import('./src/components/ui/form/FormItem.vue')['default']
     FormLabel: typeof import('./src/components/ui/form/FormLabel.vue')['default']
     FormMessage: typeof import('./src/components/ui/form/FormMessage.vue')['default']
+    Hero: typeof import('./src/components/Hero.vue')['default']
     Input: typeof import('./src/components/ui/input/Input.vue')['default']
     Labe: typeof import('~icons/la/be')['default']
     Label: typeof import('./src/components/ui/label/Label.vue')['default']

@@ -50,7 +50,9 @@
 
 <script setup>
 import axios from "../../assets/lib/axios";
+import { useRouter } from "vue-router";
 
+let router = useRouter();
 let res = ref('');
 let error = ref({})
 let loading = ref(false)
@@ -77,12 +79,15 @@ const handleLogin = async () => {
         await axios.get("/sanctum/csrf-cookie");
         try {
             res.value = await axios.post("/login", form.value);
-            console.log(res)
+            router.push("/");
+
         } catch (err) {
             error.value = err
             console.log('errorss', err)
         }
+
         loading.value = false
+
     } else {
         error.value = {
             validation: {

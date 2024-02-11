@@ -1,5 +1,4 @@
 import Axios from 'axios';
-
 // Create an instance of Axios with default settings
 const axios = Axios.create({
     baseURL: 'http://localhost:8000',
@@ -16,18 +15,18 @@ const axios = Axios.create({
 });
 
 // Add an interceptor to handle authentication or other common logic
-axios.interceptors.request.use(
-    (config) => {
-        // Add any common headers or logic here
-        // For example, you can add an authentication token
-        // config.headers.Authorization = `Bearer ${token}`;
+// axios.interceptors.request.use(
+//     (config) => {
+//         // Add any common headers or logic here
+//         // For example, you can add an authentication token
+//         // config.headers.Authorization = `Bearer ${token}`;
 
-        return config;
-    },
-    (error) => {
-        return Promise.reject(error);
-    }
-);
+//         return config;
+//     },
+//     (error) => {
+//         return Promise.reject(error);
+//     }
+// );
 
 // Add an interceptor to handle responses or other common logic
 axios.interceptors.response.use(null, (err) => {
@@ -60,7 +59,9 @@ axios.interceptors.response.use(null, (err) => {
         error.message = 'Unknown error';
     }
     return Promise.reject(error);
-}
+} 
+
+
 
 );
 

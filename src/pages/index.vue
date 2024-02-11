@@ -1,9 +1,8 @@
 <template>
- 
- <ClientLayout  >
-        
-</ClientLayout>
+  <ClientLayout>
 
+
+  </ClientLayout>
 </template>
 
 <script setup>

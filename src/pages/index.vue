@@ -1,7 +1,7 @@
 <template>
   <ClientLayout>
-    <div class="  space-y-6">
-      <Hero />
+    <div class=" w-full h-full  space-y-6">
+      <Hero class=" w-full h-full" />
       <Categories />
     </div>
   </ClientLayout>

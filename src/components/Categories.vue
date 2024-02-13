@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-row justify-start items-center gap-4 w-screen h-16 bg-white shadow-md ">
-        <Category class="overflow-x-auto " :category="cat" v-for="cat in categoryStore.categories" />
+    <div class="flex flex-row justify-start items-center gap-4 w-full h-32 bg-white shadow-md ">
+        <Category class="  " :category="cat" v-for="cat in categoryStore.categories" />
     </div>
 </template>
 

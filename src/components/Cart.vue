@@ -1,14 +1,15 @@
 <template>
     <div>
         <Sheet :open="isCartVisible" :default-open="isCartVisible" v-on:update:open="setCartInVisible"  modal>
-            <SheetContent>
+            <SheetContent class=" pt-12 w-full" >
+               
                 <SheetHeader>
                     <SheetTitle>{{ props.title }}</SheetTitle>
                     <SheetDescription>
                         {{ props.description }}
                     </SheetDescription>
                 </SheetHeader>
-                <slot name="Body" />
+                <slot class=" mt-4 " name="Body" />
                 <SheetFooter>
                     <SheetClose>
                         <slot name="ButtonClose" />

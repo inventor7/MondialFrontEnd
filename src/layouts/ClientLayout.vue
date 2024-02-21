@@ -1,16 +1,16 @@
 <template>
-    <div class=" flex flex-col justify-center items-center w-full   ">
-       
+    <div class=" flex flex-col justify-center items-center w-full  ">
 
-        <div class=" w-full h-full max-w-[100rem] " >
-             <Navbar />
+
+        <div class=" w-full h-full max-w-[100rem] ">
+            <Navbar />
             <slot class=" w-full h-full " />
 
         </div>
 
 
         <!-- cart -->
-        <Button variant="outline" class=" absolute h-12 w-12 p-2 right-4 bottom-4 rounded-full shadow  sm:hidden flex"
+        <Button variant="outline" class=" fixed h-12 w-12 p-2 right-4 bottom-4 rounded-full shadow  sm:hidden flex"
             size="icon">
             <svg @click="useCartStore().setCartVisible()" class=" w-full h-full " viewBox="0 0 20 20" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -20,9 +20,9 @@
             </svg>
         </Button>
 
-        <Cart title="Cart" description="Your cart items">
-            <template #Body>
-
+        <Cart title="" description="" >
+            <template  #Body>
+                
             </template>
             <template #ButtonClose>
                 <Button @click="useCartStore().setCartInVisible()" variant="outline" class=" w-full ">

@@ -9,48 +9,39 @@ export const useCategoryStore = defineStore('category', () => {
         {
             id: 1,
             name: 'Chaise',
-            img: ''
+            styl: 'col-span-2 row-span-5'
         },
         {
             id: 2,
             name: 'Burau',
-            img: ''
+            styl: 'col-span-1 row-span-2'
         }, 
         {
             id: 3,
             name: 'Cuisine',
-            img: ''
+            styl: 'col-span-1 row-span-2'
         }, 
         {
             id: 4,
             name: 'Salon',
-            img: ''
+            styl: 'col-span-2 row-span-5'
         }, 
         {
             id: 5,
             name: 'Chambre a coucher',
-            img: ''
+            styl: 'col-span-2 row-span-5'
         }, 
         {
             id: 6,
             name: 'Armoire',
-            img: ''
+            styl: 'col-span-2 row-span-3'
         },
         {
             id: 7,
             name: 'Armoire',
-            img: ''
+            styl: 'col-span-4 row-span-5'
         },
-        {
-            id: 8,
-            name: 'Armoire',
-            img: ''
-        },
-        {
-            id: 9,
-            name: 'Armoire',
-            img: ''
-        },
+       
     ])
 
     return {

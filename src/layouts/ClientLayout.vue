@@ -20,9 +20,9 @@
             </svg>
         </Button>
 
-        <Cart title="" description="" >
-            <template  #Body>
-                
+        <Cart title="" description="">
+            <template #Body>
+                <CartItems />
             </template>
             <template #ButtonClose>
                 <Button @click="useCartStore().setCartInVisible()" variant="outline" class=" w-full ">

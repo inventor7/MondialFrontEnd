@@ -6,8 +6,10 @@ export const useCartStore = defineStore('cart', () => {
 
     //data
     const isCartVisible = ref(false)
+    const shoppingCart = reactive([])
 
-    // function
+
+    // Visibility methods
     const setCartVisible = () => {
         isCartVisible.value = true
     }
@@ -20,14 +22,65 @@ export const useCartStore = defineStore('cart', () => {
         isCartVisible.value = !isCartVisible.value
     }
 
+
+    
+    // Cart methods
+    const addQuantity = (productId) => {
+        const product = shoppingCart.find(item => item.id === productId)
+        if (product) {
+            product.quantity++
+        }
+    }
+
+    const subtractQuantity = (productId) => {
+        const product = shoppingCart.find(item => item.id === productId)
+        if (product && product.quantity > 1) {
+            product.quantity--
+        }
+    }
+
+    const removeProduct = (productId) => {
+        const index = shoppingCart.findIndex(item => item.id === productId)
+        if (index !== -1) {
+            shoppingCart.splice(index, 1)
+        }
+    }
+
+    const addProduct = (product) => {   
+        const index = shoppingCart.findIndex(item => item.id === product.id)
+        if (index !== -1) {
+            shoppingCart[index].quantity++
+        } else {
+            shoppingCart.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                category: product.category,
+                quantity: 1
+            })
+        }
+    }
+
+
+
+    
+
     return {
 
         // data
         isCartVisible,
+        shoppingCart,
 
-        // functions
+        // visibility methods
         setCartInVisible,
         setCartVisible,
-        toggleCartVisibility
+        toggleCartVisibility,
+
+        // cart methods
+        addQuantity,
+        subtractQuantity,
+        removeProduct,
+        addProduct
+        
     }
 })

@@ -9,13 +9,7 @@ const props = defineProps({
 <template>
   <div
     :class="
-      cn(
-        'flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-x-2',
-        props.class
-      )
+      cn('animate-pulse rounded-md bg-zinc-100 dark:bg-zinc-800', props.class)
     "
-  >
-  
-    <slot />
-  </div>
+  />
 </template>

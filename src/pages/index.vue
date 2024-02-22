@@ -13,6 +13,14 @@
         </svg>
       </h2>
       <Categories class=" h-full px-2 " />
+
+      <!-- Promotion !! 30% -->
+      <DescriptionHero class=" w-full"  />
+
+
+
+
+
     </div>
   </ClientLayout>
 </template>

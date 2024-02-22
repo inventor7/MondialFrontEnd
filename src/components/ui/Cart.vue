@@ -1,7 +1,7 @@
 <template>
     <div>
         <Sheet :open="isCartVisible" :default-open="isCartVisible" v-on:update:open="setCartInVisible"  modal>
-            <SheetContent class=" pt-12 w-full" >
+            <SheetContent class=" flex flex-col h-full justify-between  pt-12 w-full" >
                
                 <SheetHeader>
                     <SheetTitle>{{ props.title }}</SheetTitle>
@@ -9,9 +9,10 @@
                         {{ props.description }}
                     </SheetDescription>
                 </SheetHeader>
-                <slot class=" mt-4 " name="Body" />
+                
+                <slot class="flex-1 h-full w-full  mt-4 " name="Body" />
                 <SheetFooter>
-                    <SheetClose>
+                    <SheetClose  >
                         <slot name="ButtonClose" />
                     </SheetClose>
                 </SheetFooter>

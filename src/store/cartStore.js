@@ -1,86 +1,85 @@
 // a cart store
-
 import { defineStore } from 'pinia'
 
-export const useCartStore = defineStore('cart', () => {
-
-    //data
-    const isCartVisible = ref(false)
-    const shoppingCart = reactive([])
-
-
-    // Visibility methods
-    const setCartVisible = () => {
-        isCartVisible.value = true
-    }
-
-    const setCartInVisible = () => {
-        isCartVisible.value = false
-    }
-
-    const toggleCartVisibility = () => {
-        isCartVisible.value = !isCartVisible.value
-    }
-
-
-    
-    // Cart methods
-    const addQuantity = (productId) => {
-        const product = shoppingCart.find(item => item.id === productId)
-        if (product) {
-            product.quantity++
+export const useCartStore = defineStore("cartStore", {
+    id: "cart",
+    state: () => ({
+        //data
+        isCartVisible: false,
+        shoppingCart: [],
+        shoppingItem: {
+            id: 0,
+            name: '',
+            price: 0,
+            quantity: 0
         }
-    }
 
-    const subtractQuantity = (productId) => {
-        const product = shoppingCart.find(item => item.id === productId)
-        if (product && product.quantity > 1) {
-            product.quantity--
+    }),
+
+    actions: {
+
+
+        // Visibility methods
+        setCartVisible() {
+            this.isCartVisible = true
+        },
+
+        setCartInVisible() {
+            this.isCartVisible = false
+        },
+
+        toggleCartVisibility() {
+            this.isCartVisible = !this.isCartVisible
+        },
+
+
+
+        // Cart methods
+        addQuantity(productId) {
+            const product = this.shoppingCart.find(item => item.id === productId)
+            if (product) {
+                product.quantity++
+            }
+        },
+
+        subtractQuantity(productId) {
+            const product = this.shoppingCart.find(item => item.id === productId)
+            if (product && product.quantity > 1) {
+                product.quantity--
+            }
+        },
+
+        removeProduct(productId) {
+            const productIndex = this.shoppingCart.findIndex(item => item.id === productId)
+            this.shoppingCart.splice(productIndex, 1)
+        },
+
+        addProduct(product) {
+            console.log()
+            const productIndex = this.shoppingCart.findIndex(item => item.id === product.id)
+            if (productIndex === -1) {
+                this.shoppingCart.push({ ...product, quantity: 1 })
+            } else {
+                this.shoppingCart[productIndex].quantity++
+            }
         }
-    }
 
-    const removeProduct = (productId) => {
-        const index = shoppingCart.findIndex(item => item.id === productId)
-        if (index !== -1) {
-            shoppingCart.splice(index, 1)
-        }
-    }
+    },
 
-    const addProduct = (product) => {   
-        const index = shoppingCart.findIndex(item => item.id === product.id)
-        if (index !== -1) {
-            shoppingCart[index].quantity++
-        } else {
-            shoppingCart.push({
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                category: product.category,
-                quantity: 1
-            })
-        }
-    }
+
+    // persist the shopping cart in local storage
+    // this will keep the cart data even after the page is refreshed
+
+    persist: [
+        {
+            key: "cartStore",
+            storage: localStorage,
+            paths: [
+                "shoppingCart",
+            ],
+        },
+    ],
 
 
 
-    
-
-    return {
-
-        // data
-        isCartVisible,
-        shoppingCart,
-
-        // visibility methods
-        setCartInVisible,
-        setCartVisible,
-        toggleCartVisibility,
-
-        // cart methods
-        addQuantity,
-        subtractQuantity,
-        removeProduct,
-        addProduct
-        
-    }
 })

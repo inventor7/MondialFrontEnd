@@ -1,10 +1,10 @@
 <template>
-    <div class=" flex flex-col justify-center items-center w-full  ">
+    <div class=" flex flex-col justify-center items-center w-full h-full  ">
 
 
-        <div class=" w-full h-full max-w-[100rem] ">
+        <div class=" w-full h-full md:max-w-[100rem] space-y-12 sm:space-y-[4.5rem]  md:space-y-20 ">
             <Navbar />
-            <slot class=" w-full h-full " />
+            <slot class=" w-full h-full  " />
 
         </div>
 
@@ -22,12 +22,8 @@
 
         <Cart title="" description="">
             <template #Body>
-                <CartItems />
-            </template>
-            <template #ButtonClose>
-                <Button @click="useCartStore().setCartInVisible()" variant="outline" class=" w-full ">
-                    Close
-                </Button>
+               
+                <CartItems class=" px-4" />
             </template>
         </Cart>
     </div>

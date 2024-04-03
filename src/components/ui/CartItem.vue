@@ -1,5 +1,5 @@
 <template>
-    <div class=" flex flex-row justify-start items-start w-full h-fit p-2 gap-4  ">
+    <div class=" flex flex-row justify-start items-start w-full h-fit gap-4  ">
         <div class=" flex flex-col justify-between items-center w-full h-full">
             <img src="../../assets/images/1.png" alt="img">
             <div class=" flex flex-row justify-center items-center gap-1">
@@ -31,14 +31,20 @@
             </div>
         </div>
 
-        <div class=" flex flex-col justify-start items-start w-full h-full gap-2 ">
-            <h1 class=" text-lg font-semibold">{{ item.name }}</h1>
-            <p class=" text-xs ">#{{ item.id }}</p>
-            <p class=" text-xs ">{{ item.price }} €</p>
-        </div>
-    </div>
+       <div class=" flex flex-col justify-between items-start w-full h-full" >
+         <div class=" flex flex-col justify-start items-start w-full h-full gap-2 ">
+                <h1 class=" text-lg font-semibold">{{ item.name }}</h1>
+                <p class=" text-xs ">#{{ item.id }}</p>
+                <p class=" text-xs ">{{ item.price }} €</p>
+            </div>
+           <div class=" w-full flex justify-end"  >
+                        <Button @click="useCartStore().removeProduct(item.id)" variant="link" class="text-red-600 text-xs " >remove</Button>
+           </div>
 
-    <div class=" w-full h-[0.5px] bg-black/50 "></div>
+       </div>
+    </div>
+     <Separator orientation="horizontal" />
+    
 </template>
 
 <script setup >

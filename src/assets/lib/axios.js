@@ -49,17 +49,14 @@ axios.interceptors.response.use(null, (err) => {
     } else if (err.response?.status === 403) {
         error.message = 'Forbidden';
     }
-    else if (err.response?.status === 404) {
-        error.message = 'Not found';
-    }
     else if (err.response?.status === 500) {
         error.message = 'Server error';
     }
     else {
-        error.message = 'Unknown error';
+        error.message = err.message
     }
     return Promise.reject(error);
-} 
+}
 
 
 

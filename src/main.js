@@ -1,10 +1,12 @@
-import "./assets/style.css";
-import en from "./locales/en.json";
-import ar from "./locales/ar.json";
+import "./assets/style.css"
+import en from "./locales/en.json"
+import ar from "./locales/ar.json"
 
-import { createApp } from "vue";
-import { createPinia } from "pinia";
-import { createI18n } from "vue-i18n";
+import { createApp } from "vue"
+import { createPinia } from "pinia"
+import { createI18n } from "vue-i18n"
+
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import App from "./App.vue";
 import router from "./router";
@@ -24,7 +26,9 @@ const app = createApp(App);
 
 app.use(router);
 app.use(i18n);
-app.use(createPinia());
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+app.use(pinia)
 
 app.mount("#app");
 

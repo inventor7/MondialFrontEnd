@@ -23,7 +23,7 @@ module.exports = {
     extend: {
       fontFamily: {
         // make libre the default font
-        sans: ["Libre Baskerville", "sans-serif"],
+        liblaski: ["Libre Baskerville","sans"]
       },
       colors: {
         border: "hsl(var(--border))",

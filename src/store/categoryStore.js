@@ -28,7 +28,7 @@ export const useCategoryStore = defineStore('category', () => {
         }, 
         {
             id: 5,
-            name: 'Chambre a coucher',
+            name: 'Armoire',
             styl: 'col-span-2 row-span-5'
         }, 
         {
@@ -38,7 +38,7 @@ export const useCategoryStore = defineStore('category', () => {
         },
         {
             id: 7,
-            name: 'Armoire',
+            name: 'Chambre a coucher',
             styl: 'col-span-4 row-span-5'
         },
        

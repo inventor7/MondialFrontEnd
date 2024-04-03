@@ -1,5 +1,6 @@
 <template>
-    <nav class=" flex flex-row justify-between items-center w-full p-1 py-2 sm:p-3 lg:p-4 select-none bg-white   ">
+    <nav
+        class="fixed top-0 z-50 right-1/2 md:max-w-[100rem]  translate-x-1/2 flex flex-row justify-between items-center w-full p-1 py-2 sm:p-3 lg:p-4 select-none bg-white  shadow-sm border-b-[0.5px]    ">
         <div class="left flex-1 flex flex-row justify-start items-center w-full gap-3 md:gap-6 lg:hidden ">
             <router-link to="#">
                 <svg class=" w-6 h-6 lg:w-8 lg:h-8 " viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +45,8 @@
         </div>
         <div class="middle flex-1 w-full text-center lg:text-start ">
             <router-link to="/">
-                <h1 class=" font-[700] whitespace-nowrap  text-xl lg:text-2xl 2xl:text-3xl ">Mondial Prestige
+                <h1 class=" font-[700] whitespace-nowrap font-liblaski  text-xl lg:text-2xl  ">Mondial
+                    Prestige
                 </h1>
             </router-link>
         </div>

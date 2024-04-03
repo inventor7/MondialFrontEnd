@@ -6,7 +6,10 @@ export const useProductStore = defineStore('product', () => {
 
     // loading and error handling
     const loading = ref(false)
-    const error = ref(null)
+    const error = reactive({
+        message: '',
+        status: false
+    })
 
 
     //data
@@ -19,20 +22,33 @@ export const useProductStore = defineStore('product', () => {
 
     // fetch products
     const fetchProducts = async () => {
-        loading.value = true
-        const res = await axios.get('/api/products', {
-            params: {
-                page: currentPage.value,
-                itemsPerPage: itemsPerPage.value
-            },
-        })
-        console.log(res.data)
-        loading.value = false
-        products.value = [...products.value, ...res.data.data]
-        currentPage.value++
+        try {
+
+            loading.value = true
+            const res = await axios.get('/api/products/', {
+                params: {
+                    page: currentPage.value,
+                    itemsPerPage: itemsPerPage.value
+                },
+            })
+
+            loading.value = false
+            products.value = [...products.value, ...res.data.data]
+            // add quantity to each product
+            products.value.forEach(product => {
+                product.quantity = 0
+            })
+            currentPage.value++
+
+            return res
+
+        } catch (err) {
+            console.log(err)
+            error.status = true,
+                error.message = err?.message
+        }
 
 
-        return res
 
 
     }

@@ -1,20 +1,19 @@
 <template>
-    <div class="relative  w-full h-full ">
+    <div class="relative font-liblaski  w-full h-full ">
 
-        <Carousel class="relative w-full h-full   max-w-[100rem] " :opts="{
-            loop: true,
-        }" @init-api="setApi">
+        <Carousel class="relative w-full h-full   md:max-w-[100rem] " 
+        :plugins="[plugin]" @mouseenter="plugin.stop"
+            @mouseleave="[plugin.reset(), plugin.play(), console.log('Runing')];">
 
             <CarouselContent>
                 <CarouselItem v-for="(_, index) in 5" :key="index">
-                    <div class="relative max-h-[45rem] h-full min-h-[60vh] p-1 flex flex-col justify-center items-center">
-                        <div class="absolute z-0 top-0 w-full h-full bg-gradient-to-b from-black/40 to-transparent"></div>
+                    <div class="relative max-h-[45rem] h-full min-h-[60vh]  flex flex-col justify-center items-center">
+                        <div class="absolute z-0 top-0 w-full h-full bg-gradient-to-b from-black/40 to-transparent">
+                        </div>
                         <img class=" object-cover  w-full h-full" src="@/assets/images/bg-hero.jpg" alt="bg">
                     </div>
 
-
                 </CarouselItem>
-
             </CarouselContent>
 
             <!-- text will be fade when carousel slide to the next one -->
@@ -26,11 +25,11 @@
                         Élégance Mondiale
                     </h1>
                     <p class=" text-xs sm:text-base w-full mt-2 mb-4 md:mb-1  text-white">
-                        Découvrez notre collection de meubles et accessoires de décoration .
+                        Découvrez notre collection de meubles et accessoires de décoration.
                     </p>
                 </div>
 
-                <Button @click="goToProducts()" class="w-full sm:w-auto" size="lg">
+                <Button @click="goToProducts()" class="w-full sm:w-auto font-sans " size="lg">
 
                     Shop Now
                     <svg width="29" height="29" viewBox="0 0 29 29" fill="none" class="ml-2"
@@ -47,8 +46,8 @@
                 <!-- carousel indicator mini dots dynamic -->
                 <div class="flex justify-center space-x-2">
                     <div v-for="i in totalCount" :key="i"
-                        class="w-10 h-1 transition-all duration-300 ease-in-out rounded-full" @click="api?.scrollTo(i - 1)"
-                        :class="i === current ? 'bg-primary' : 'bg-black/20'">
+                        class="w-10 h-1 transition-all duration-300 ease-in-out rounded-full"
+                        @click="api?.scrollTo(i - 1)" :class="i === current ? 'bg-primary' : 'bg-black/20'">
 
                     </div>
                 </div>
@@ -60,9 +59,10 @@
     </div>
 </template>
 
-<script setup >
+<script setup>
 import { watchOnce } from '@vueuse/core'
 import { useRouter } from "vue-router";
+import Autoplay from 'embla-carousel-autoplay'
 
 let router = useRouter()
 
@@ -83,20 +83,14 @@ function goToProducts() {
 }
 
 
-watchOnce(api, (api) => {
-    if (!api)
-        return
 
-    totalCount.value = api.scrollSnapList().length
-    current.value = api.selectedScrollSnap() + 1
 
-    api.on('select', () => {
-        current.value = api.selectedScrollSnap() + 1
-    })
+const plugin = Autoplay({
+    loop: true,
+    delay: 2000,
+    stopOnMouseEnter: true,
+    stopOnInteraction: false,
 })
-
-
-
 
 
 </script>

@@ -3,7 +3,7 @@
     <div class=" w-full h-full  space-y-6">
       <Hero class=" w-full h-[70vh]" />
       <h2
-        class=" flex flex-row justify-start items-center  gap-1 md:gap-2 font-bold text-lg sm:text-xl md:text-2xl xl:text-3xl ml-2 hover:underline cursor-pointer hover: transition-all duration-300 ease-in-out  ">
+        class=" flex flex-row justify-start items-center font-liblaski  gap-1 md:gap-2 font-bold text-lg sm:text-xl md:text-2xl xl:text-3xl ml-2 hover:underline cursor-pointer hover: transition-all duration-300 ease-in-out  ">
         Categories
         <svg width="29" height="29" viewBox="0 0 29 29" fill="none" class=" hover:underline text-xl md:text-5xl "
           xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +12,7 @@
             fill="black" />
         </svg>
       </h2>
-      <Categories class=" h-full px-2 " />
+      <Categories class=" w-full h-full px-2 " />
 
       <!-- Promotion !! 30% -->
       <DescriptionHero class=" w-full"  />
